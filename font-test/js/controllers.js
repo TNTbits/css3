@@ -27,4 +27,13 @@ angular.module('fontTester.controllers', [])
     $scope.clearAll = function() {
       $scope.items = [];
     };
+
+    $scope.getUrl = function () {
+      var res = "";
+      for (var i = $scope.items.length - 1; i >= 0; i--) {
+        res += $scope.items[i].text.replace(" ","+") + "|";
+      };
+
+      return "https://www.google.com/fonts#ReviewPlace:refine/Collection:" + res;
+    }
 }]);

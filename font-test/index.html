@@ -65,7 +65,7 @@
         </div>
         <br>
         <div class="list-group">
-          <div class="list-group-item font-item" ng-repeat="item in items" ng-class="{'Font-complete': item.complete}">
+          <div class="list-group-item font-item" ng-repeat="item in items" ng-class="{'font-complete': item.complete}">
             <link href='http://fonts.googleapis.com/css?family={{item.text}}' rel='stylesheet' type='text/css'>
             <span class="close" ng-click="removeFont($index)">&times;</span>
             <label>
@@ -77,7 +77,15 @@
             </label>
           </div>
         </div>
-        <button class="btn btn-block btn-danger" ng-click="clearAll()">Clear All Items</button>
+        <div class="row">
+          <div class="col-xs-10">
+            <button class="btn btn-block btn-danger" ng-click="clearAll()">Clear All Items</button>
+          </div>
+          <div class="col-xs-2">
+            <a href="{{getUrl()}}" target="_blank" class="btn btn-danger btn-block">
+              <span class="glyphicon glyphicon-link"></span>
+            </a>
+          </div>
       </div>
     </div>
 

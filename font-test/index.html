@@ -8,9 +8,17 @@
 
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
 
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//mgcrea.github.io/angular-strap/static/styles/bootstrap-additions.min.css">
+    <link rel="stylesheet" href="//mgcrea.github.io/angular-strap/static/styles/libraries.min.css">
+    <link rel="stylesheet" href="//mgcrea.github.io/angular-strap/static/styles/main.min.css">
+
   <link rel="stylesheet" href="../public/components/bootstrap-theme-white-plum/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/2.0/animate.min.css">
   <link rel="stylesheet" href="css/main.css">
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,14 +27,32 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body ng-app="animTodo">
+  <body ng-app="fontTester">
       
-    <div ng-controller="TodoCtrl">
+    <div ng-controller="FontCtrl">
+
+
       <div class="container">
+
         <h1 class="page-header text-center">Font Test</h1>
-        <form ng-submit="addTodo(newTodo)">
-          <input type="text" ng-model="newTodo" class="form-control" placeholder="New fonts goes here, then press Enter" focus>
+        <form ng-submit="addFont(newFont)">
+
+          <div class="input-group">
+
+          <input type="text" ng-model="newFont" class="form-control" placeholder="New fonts goes here, then press Go!" focus ng-options="font.family as font.family for font in fonts" data-limit="12" bs-typeahead>
+          <span class="input-group-btn">
+            <button class="btn btn-danger" type="submit">Go!</button>
+          </span>
+
+        </div><!-- /input-group -->
         </form>
+
+        <br>
+        <div class="row">
+          <div class="col-xs-12">
+            <input type="text" ng-model="previewText" ng-init="previewText = ''" class="form-control" placeholder="Insert live preview text here, or leave blank for font name">
+          </div>
+        </div>
         <br>
           Font size
         <div class="row">
@@ -39,12 +65,15 @@
         </div>
         <br>
         <div class="list-group">
-          <div class="list-group-item todo-item" ng-repeat="item in items" ng-class="{'todo-complete': item.complete}">
+          <div class="list-group-item Font-item" ng-repeat="item in items" ng-class="{'Font-complete': item.complete}">
             <link href='http://fonts.googleapis.com/css?family={{item.text}}' rel='stylesheet' type='text/css'>
-            <span class="close" ng-click="removeTodo($index)">&times;</span>
+            <span class="close" ng-click="removeFont($index)">&times;</span>
             <label>
               <input type="checkbox" ng-model="item.complete">
-              <span ng-bind="item.text" style="font-family: '{{item.text}}'; font-size:{{fontSize}}em">This is the content of the Todo</span>
+              <span style="font-family: '{{item.text}}'; font-size:{{fontSize}}em">
+                <span ng-if="previewText == '' ">{{item.text}}</span>
+                <span ng-if="previewText != '' ">{{previewText}}</span>
+              </span>
             </label>
           </div>
         </div>
@@ -57,8 +86,14 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-animate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular-resource.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular-animate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular-sanitize.min.js"></script>
+    <script src="//mgcrea.github.io/angular-strap/static/scripts/angular-strap.min.js"></script>
+    <script src="//mgcrea.github.io/angular-strap/static/scripts/angular-strap.tpl.min.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/controllers.js"></script>
     <script src="js/main.js"></script>
 
   </body>

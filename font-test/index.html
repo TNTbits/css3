@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TNTbits - Font Test</title>
+
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="../public/components/bootstrap-theme-white-plum/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/2.0/animate.min.css">
+  <link rel="stylesheet" href="css/main.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body ng-app="animTodo">
+      
+    <div ng-controller="TodoCtrl">
+      <div class="container">
+        <h1 class="page-header text-center">Font Test</h1>
+        <form ng-submit="addTodo(newTodo)">
+          <input type="text" ng-model="newTodo" class="form-control" placeholder="New fonts goes here, then press Enter" focus>
+        </form>
+        <br>
+          Font size
+        <div class="row">
+          <div class="col-xs-10">
+            <input class="form-control"  type="range" ng-init="fontSize=2" ng-model="fontSize" name="points" min="1" max="20" value="1">
+          </div>
+          <div class="col-xs-2">
+            <input class="form-control" ng-model="fontSize" val="1">
+          </div>
+        </div>
+        <br>
+        <div class="list-group">
+          <div class="list-group-item todo-item" ng-repeat="item in items" ng-class="{'todo-complete': item.complete}">
+            <link href='http://fonts.googleapis.com/css?family={{item.text}}' rel='stylesheet' type='text/css'>
+            <span class="close" ng-click="removeTodo($index)">&times;</span>
+            <label>
+              <input type="checkbox" ng-model="item.complete">
+              <span ng-bind="item.text" style="font-family: '{{item.text}}'; font-size:{{fontSize}}em">This is the content of the Todo</span>
+            </label>
+          </div>
+        </div>
+        <button class="btn btn-block btn-danger" ng-click="clearAll()">Clear All Items</button>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-animate.min.js"></script>
+    <script src="js/main.js"></script>
+
+  </body>
+</html>
